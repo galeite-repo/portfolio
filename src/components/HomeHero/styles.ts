@@ -81,7 +81,7 @@ export const CodeItem = styled.pre`
   color: #fff;
   width: 24rem;
   align-self: flex-start;
-  transition: 1s;
+  transition: 1s !important;
   border-radius: 1rem 0 1rem 0;
   > div {
     margin: 0.2rem 0;
