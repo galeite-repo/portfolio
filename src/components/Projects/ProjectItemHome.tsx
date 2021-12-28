@@ -2,18 +2,18 @@ import Link from 'next/link';
 import { AiOutlineRightCircle } from 'react-icons/ai';
 import { ProjectContainer } from './styles';
 
-interface ProjectItemProps {
+interface ProjectItemHomeProps {
   title: string;
   type: string;
   slug: string;
   img: string;
 }
-export default function ProjectItem({
+export default function ProjectItemHome({
   title,
   type,
   slug,
   img
-}: ProjectItemProps) {
+}: ProjectItemHomeProps) {
   return (
     <ProjectContainer imgUrl={img}>
       <section>

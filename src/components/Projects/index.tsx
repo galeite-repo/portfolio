@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import SectionTitle from '../SectionTitle';
-import ProjectItem from './ProjectItem';
+import ProjectItemHome from './ProjectItemHome';
 import { Container } from './styles';
 
 function Projects() {
@@ -9,19 +9,19 @@ function Projects() {
       <SectionTitle title="Últimos Projetos" />
 
       <section>
-        <ProjectItem
+        <ProjectItemHome
           img="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvamVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
           title="Projeto 01"
           type="Website"
           slug="teste"
         />
-        <ProjectItem
+        <ProjectItemHome
           img="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvamVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
           title="Projeto 02"
           type="Aplicativo"
           slug="teste"
         />
-        <ProjectItem
+        <ProjectItemHome
           img="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvamVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
           title="Projeto 03"
           type="Backend"
