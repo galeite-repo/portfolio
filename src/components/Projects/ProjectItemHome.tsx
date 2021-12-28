@@ -24,7 +24,7 @@ export default function ProjectItemHome({
         </div>
       </section>
       <button type="button">
-        <Link href={`/projetos/${slug}`}>
+        <Link href={`/projects/${slug}`}>
           <a>
             Ver mais <AiOutlineRightCircle />
           </a>

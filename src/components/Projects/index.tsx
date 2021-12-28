@@ -1,35 +1,38 @@
+/* eslint-disable no-console */
 import Link from 'next/link';
 import SectionTitle from '../SectionTitle';
 import ProjectItemHome from './ProjectItemHome';
 import { Container } from './styles';
 
-function Projects() {
+interface IProject {
+  slug: string;
+  title: string;
+  type: string;
+  description: string;
+  link: string;
+  thumbnail: string;
+}
+interface ProjectsProps {
+  projects: IProject[];
+}
+function Projects({ projects }: ProjectsProps) {
   return (
     <Container>
       <SectionTitle title="Últimos Projetos" />
 
       <section>
-        <ProjectItemHome
-          img="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvamVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
-          title="Projeto 01"
-          type="Website"
-          slug="teste"
-        />
-        <ProjectItemHome
-          img="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvamVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
-          title="Projeto 02"
-          type="Aplicativo"
-          slug="teste"
-        />
-        <ProjectItemHome
-          img="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvamVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
-          title="Projeto 03"
-          type="Backend"
-          slug="teste"
-        />
+        {projects.slice(0, 3).map(project => (
+          <ProjectItemHome
+            key={project.slug}
+            img={project.thumbnail}
+            title={project.title}
+            type={project.type}
+            slug={project.slug}
+          />
+        ))}
       </section>
       <button type="button">
-        <Link href="/projetos">
+        <Link href="/projects">
           <a>Ver todos os projetos</a>
         </Link>
       </button>

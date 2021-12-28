@@ -1,38 +1,37 @@
+import { GetStaticProps } from 'next';
 import Header from '../../components/Header';
 import ProjectItem from '../../components/ProjectItem';
 import { ProjectsContainer } from '../../styles/ProjectsStyles';
+import ProjectsApi from '../api/projects';
 
-export default function Projects() {
+interface IProject {
+  slug: string;
+  title: string;
+  type: string;
+  description: string;
+  link: string;
+  thumbnail: string;
+}
+interface ProjectsProps {
+  projects: IProject[];
+}
+
+export default function Projects({ projects }: ProjectsProps) {
   return (
     <ProjectsContainer>
       <Header />
       <main className="container">
-        <ProjectItem
-          title="Projeto 01"
-          type="Website"
-          slug="teste"
-          imgUrl="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvamVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
-        />
-
-        <ProjectItem
-          title="Projeto 01"
-          type="Website"
-          slug="teste"
-          imgUrl="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvamVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
-        />
-        <ProjectItem
-          title="Projeto 01"
-          type="Website"
-          slug="teste"
-          imgUrl="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvamVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
-        />
-        <ProjectItem
-          title="Projeto 01"
-          type="Website"
-          slug="teste"
-          imgUrl="https://images.unsplash.com/photo-1572177812156-58036aae439c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvamVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
-        />
+        {projects.map(project => (
+          <ProjectItem
+            key={project.slug}
+            title={project.title}
+            type={project.type}
+            slug={project.slug}
+            imgUrl={project.thumbnail}
+          />
+        ))}
       </main>
     </ProjectsContainer>
   );
 }
+export const getStaticProps: GetStaticProps = async () => ProjectsApi();

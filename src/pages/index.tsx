@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next';
 import Experiences from '../components/Experiences';
 import Footer from '../components/Footer';
 import FormContact from '../components/FormContact';
@@ -6,15 +7,27 @@ import HomeHero from '../components/HomeHero';
 import Knowledge from '../components/Knowledge';
 import Projects from '../components/Projects';
 import { HomeContainer } from '../styles/HomeStyles';
+import ProjectsApi from './api/projects';
 
-export default function Home() {
+interface IProject {
+  slug: string;
+  title: string;
+  type: string;
+  description: string;
+  link: string;
+  thumbnail: string;
+}
+interface HomeProps {
+  projects: IProject[];
+}
+export default function Home({ projects }: HomeProps) {
   return (
     <HomeContainer>
       <Header />
       <main className="container">
         <HomeHero />
         <Experiences />
-        <Projects />
+        <Projects projects={projects} />
         <Knowledge />
         <FormContact />
       </main>
@@ -22,3 +35,5 @@ export default function Home() {
     </HomeContainer>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => ProjectsApi();
