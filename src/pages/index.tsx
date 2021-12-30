@@ -31,7 +31,7 @@ export default function Home({ projects }: HomeProps) {
   return (
     <HomeContainer>
       <Head>
-        <title> Homeeeee | Gabriel Leite</title>
+        <title> Home | Gabriel Leite</title>
 
         <meta
           name="description"
