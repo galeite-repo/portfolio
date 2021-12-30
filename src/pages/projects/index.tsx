@@ -1,17 +1,9 @@
 import { GetStaticProps } from 'next';
-import Aos from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
 import Head from 'next/head';
-import Experiences from '../components/Experiences';
-import Footer from '../components/Footer';
-import FormContact from '../components/FormContact';
-import Header from '../components/Header';
-import HomeHero from '../components/HomeHero';
-import Knowledge from '../components/Knowledge';
-import Projects from '../components/Projects';
-import { HomeContainer } from '../styles/HomeStyles';
-import ProjectsApi from './api/projects';
+import Header from '../../components/Header';
+import ProjectItem from '../../components/ProjectItem';
+import { ProjectsContainer } from '../../styles/ProjectsStyles';
+import ProjectsApi from '../api/projects';
 
 interface IProject {
   slug: string;
@@ -21,17 +13,15 @@ interface IProject {
   link: string;
   thumbnail: string;
 }
-interface HomeProps {
+interface ProjectsProps {
   projects: IProject[];
 }
-export default function Home({ projects }: HomeProps) {
-  useEffect(() => {
-    Aos.init({ duration: 1500 });
-  }, []);
+
+export default function Projects({ projects }: ProjectsProps) {
   return (
-    <HomeContainer>
+    <ProjectsContainer>
       <Head>
-        <title> Home | Gabriel Leite</title>
+        <title> Projetos | Gabriel Leite</title>
 
         <meta
           name="description"
@@ -48,15 +38,17 @@ export default function Home({ projects }: HomeProps) {
       </Head>
       <Header />
       <main className="container">
-        <HomeHero />
-        <Experiences />
-        <Projects projects={projects} />
-        <Knowledge />
-        <FormContact />
+        {projects.map(project => (
+          <ProjectItem
+            key={project.slug}
+            title={project.title}
+            type={project.type}
+            slug={project.slug}
+            imgUrl={project.thumbnail}
+          />
+        ))}
       </main>
-      <Footer />
-    </HomeContainer>
+    </ProjectsContainer>
   );
 }
-
 export const getStaticProps: GetStaticProps = async () => ProjectsApi();
