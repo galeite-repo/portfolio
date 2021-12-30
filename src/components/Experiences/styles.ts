@@ -22,6 +22,7 @@ export const Container = styled.section`
 
 export const ItemContainer = styled.div`
   > div {
+    max-width: 19rem;
     background: ${({ theme }) => theme.gradient};
     padding: 1rem;
     padding-top: 2.5rem;
@@ -30,7 +31,6 @@ export const ItemContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    max-width: 19rem;
     transition: 0.5s;
     border-radius: 1rem;
     h1 {
