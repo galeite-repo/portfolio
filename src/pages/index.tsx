@@ -31,6 +31,7 @@ interface IPerson {
 interface IExperience {
   year: string;
   title: string;
+  company: string;
   description: string;
 }
 interface HomeProps {
