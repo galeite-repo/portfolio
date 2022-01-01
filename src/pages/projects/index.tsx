@@ -2,8 +2,8 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Header from '../../components/Header';
 import ProjectItem from '../../components/ProjectItem';
+import ProjectsApi from '../../services/projects';
 import { ProjectsContainer } from '../../styles/ProjectsStyles';
-import ProjectsApi from '../api/projects';
 
 interface IProject {
   slug: string;

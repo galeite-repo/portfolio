@@ -2,32 +2,30 @@ import SectionTitle from '../SectionTitle';
 import ExpecienceItem from './ExpecienceItem';
 import { Container } from './styles';
 
-function Experiences() {
+interface IExperience {
+  year: string;
+  title: string;
+  company: string;
+  description: string;
+}
+interface ExperiencesProps {
+  experiences: IExperience[];
+}
+
+function Experiences({ experiences }: ExperiencesProps) {
   return (
     <Container>
       <SectionTitle title="10 anos" description="de expeciencia" />
 
       <section>
-        <ExpecienceItem
-          year="2021"
-          title="Application Developer"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <ExpecienceItem
-          year="2021"
-          title="Application Developer"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <ExpecienceItem
-          year="2021"
-          title="Application Developer"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <ExpecienceItem
-          year="2021"
-          title="Application Developer"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
+        {experiences.map(experience => (
+          <ExpecienceItem
+            year={experience.year}
+            title={experience.title}
+            company={experience.company}
+            description={experience.description}
+          />
+        ))}
       </section>
     </Container>
   );

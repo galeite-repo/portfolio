@@ -11,7 +11,7 @@ import HomeHero from '../components/HomeHero';
 import Knowledge from '../components/Knowledge';
 import Projects from '../components/Projects';
 import { HomeContainer } from '../styles/HomeStyles';
-import ProjectsApi from './api/projects';
+import ProjectsApi from '../services/projects';
 
 interface IProject {
   slug: string;
@@ -21,11 +21,27 @@ interface IProject {
   link: string;
   thumbnail: string;
 }
+interface IPerson {
+  name: string;
+  surname: string;
+  email: string;
+  job: string;
+  company: string;
+}
+interface IExperience {
+  year: string;
+  title: string;
+  description: string;
+}
 interface HomeProps {
   projects: IProject[];
+  experiences: IExperience[];
+  person: IPerson;
 }
-export default function Home({ projects }: HomeProps) {
+
+export default function Home({ projects, person, experiences }: HomeProps) {
   useEffect(() => {
+    // getPerson();
     Aos.init({ duration: 1500 });
   }, []);
   return (
@@ -48,8 +64,8 @@ export default function Home({ projects }: HomeProps) {
       </Head>
       <Header />
       <main className="container">
-        <HomeHero />
-        <Experiences />
+        <HomeHero person={person} />
+        <Experiences experiences={experiences} />
         <Projects projects={projects} />
         <Knowledge />
         <FormContact />

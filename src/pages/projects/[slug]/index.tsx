@@ -6,8 +6,8 @@ import BannerProjectDetail from '../../../components/BannerProjectDetail';
 import Header from '../../../components/Header';
 import LoadingPage from '../../../components/LoadingPage';
 import { getPrismicClient } from '../../../services/prismic';
+import { ProjectById } from '../../../services/projects';
 import { ProjectDetailContainer } from '../../../styles/ProjectDetailStyles';
-import { ProjectById } from '../../api/projects';
 
 interface IProject {
   slug: string;

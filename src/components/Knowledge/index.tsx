@@ -1,6 +1,7 @@
 import { AiFillHtml5 } from 'react-icons/ai';
 import { FaCss3Alt, FaReact } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io5';
+import { GrDocker } from 'react-icons/gr';
 import SectionTitle from '../SectionTitle';
 import KnowledgeItem from './KnowledgeItem';
 import { Container } from './styles';
@@ -14,6 +15,7 @@ function Knowledge() {
         <KnowledgeItem title="CSS" icon={<FaCss3Alt />} />
         <KnowledgeItem title="JavaScript" icon={<IoLogoJavascript />} />
         <KnowledgeItem title="React" icon={<FaReact />} />
+        <KnowledgeItem title="Docker" icon={<GrDocker />} />
       </section>
     </Container>
   );
