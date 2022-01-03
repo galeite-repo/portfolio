@@ -52,7 +52,7 @@ export default function Home({ projects, person, experiences }: HomeProps) {
 
         <meta
           name="description"
-          content="Sou um desenvolvedor Front-end e aqui apresento alguns projetos desenvolvidos por mim!"
+          content="Sou um desenvolvedor Fullstack e aqui apresento alguns projetos desenvolvidos por mim!"
         />
         <meta property="og:image" content="/ogimage.png" />
         <meta property="og:image:secure_url" content="/ogimage.png" />
@@ -60,7 +60,7 @@ export default function Home({ projects, person, experiences }: HomeProps) {
         <meta name="twitter:image:src" content="/ogimage.png" />
         <meta
           property="og:description"
-          content="Sou um desenvolvedor Front-end e aqui apresento alguns projetos desenvolvidos por mim!"
+          content="Sou um desenvolvedor Fullstack e aqui apresento alguns projetos desenvolvidos por mim!"
         />
       </Head>
       <Header />
