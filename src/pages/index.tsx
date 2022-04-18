@@ -49,7 +49,7 @@ export default function Home({ projects, person, experiences }: HomeProps) {
     <HomeContainer>
       <Head>
         <title> Home | Gabriel Leite</title>
-
+        <link rel="shortcut icon" href="/logo.png" />
         <meta
           name="description"
           content="Sou um desenvolvedor Fullstack e aqui apresento alguns projetos desenvolvidos por mim!"
