@@ -25,27 +25,27 @@ function HomeHero({ person }: HomeHeroProps) {
         </TextContainer>
         <InfosContainer>
           <CodeItem data-aos="zoom-in">
-            <span className="comment">//Minha Apresentação</span>
-            <span className="purple">Infos</span> {'\u007B'}
+            <span className="comment">//Um pouco sobre mim...</span>
+            <span className="purple">me</span> {'\u007B'}
             <div>
-              Nome: <span className="blue">{person.name},</span>
+              nome: <span className="blue">"{person.name}",</span>
             </div>
             <div>
-              Sobrenome: <span className="blue">{person.surname},</span>
+              sobrenome: <span className="blue">"{person.surname}",</span>
             </div>
             <div>
-              E-mail: <span className="blue">{person.email}</span>
+              email: <span className="blue">"{person.email}"</span>
             </div>
             {'\u007D'}
           </CodeItem>
 
           <CodeItem data-aos="zoom-in">
-            <span className="purple">Cargo</span> {'\u007B'}
+            <span className="purple">job</span> {'\u007B'}
             <div>
-              Função: <span className="blue">{person.job},</span>
+              empresa: <span className="blue">"{person.company}",</span>
             </div>
             <div>
-              Empresa: <span className="blue">{person.company}</span>
+              função: <span className="blue">"{person.job}"</span>
             </div>
             {'\u007D'}
           </CodeItem>
