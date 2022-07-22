@@ -37,7 +37,7 @@ export default async function ProjectsApi() {
 
   return {
     props: { projects, person, experiences },
-    revalidate: 300 // 5min
+    // revalidate: 300 // 5min
     
   };
 }
@@ -56,6 +56,6 @@ export async function ProjectById(id: string) {
 
   return {
     props: { project },
-    revalidate: 300 // 5min
+    // revalidate: 300 // 5min
   };
 }
