@@ -8,7 +8,6 @@ const transporter = nodemailer.createTransport("SMTP", {
   tls: {
     ciphers:'SSLv3'
 },
-secure: false,
 port: 587,
   auth: {
       user: email,
