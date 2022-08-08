@@ -15,11 +15,12 @@ interface ExperiencesProps {
 function Experiences({ experiences }: ExperiencesProps) {
   return (
     <Container>
-      <SectionTitle title="10 anos" description="de expeciencia" />
+      <SectionTitle title="11 anos" description="de experiência" />
 
       <section>
         {experiences.map(experience => (
           <ExpecienceItem
+            key={experience.description}
             year={experience.year}
             title={experience.title}
             company={experience.company}

@@ -18,19 +18,16 @@ const transporter = nodemailer.createTransport({
 
 });
 const mailer = ({ senderMail, name, text }) => {
-  const from = `${name} <${senderMail}>`;
+  const from = email;
   const message = {
     from,
     to: `galeite@icloud.com`,
-    subject: `[Portfolio] - Nova mensagem - [${name}]`,
+    subject: `[Portfolio] - Nova mensagem - [${senderMail}]`,
     text,
-    replyTo: from
   };
 
   return new Promise((resolve, reject) => {
     transporter.sendMail(message, (error, info) => {
-      console.log(`error:` + error)
-      console.log(`info:` + info)
       error ? reject(error) : resolve(info)
     }
     );
@@ -44,5 +41,6 @@ export default async (req, res) => {
     return;
   }
   const mailerRes = await mailer({ senderMail, name, text: content });
+  console.log(mailerRes)
   res.send(mailerRes);
 };
