@@ -9,10 +9,9 @@ const transporter = nodemailer.createTransport({
   port: 587,
   tls: {
     rejectUnauthorized: false,
-    ciphers: 'SSLv3'
+    // ciphers: 'SSLv3'
   },
   auth: {
-
     user: email,
     pass: emailPass
   }
@@ -29,8 +28,11 @@ const mailer = ({ senderMail, name, text }) => {
   };
 
   return new Promise((resolve, reject) => {
-    transporter.sendMail(message, (error, info) =>
+    transporter.sendMail(message, (error, info) => {
+      console.log(`error:` + error)
+      console.log(`info:` + info)
       error ? reject(error) : resolve(info)
+    }
     );
   });
 };
