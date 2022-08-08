@@ -4,8 +4,8 @@ const email = process.env.MAILADDRESS;
 const emailPass = process.env.MAILPASS;
 
 const transporter = nodemailer.createTransport({
-  host: 'smtppro.zoho.com',
-  port: 465,
+  host: 'smtp.mail.me.com',
+  port: 587,
   auth: {
     user: email,
     pass: emailPass
@@ -15,8 +15,8 @@ const mailer = ({ senderMail, name, text }) => {
   const from = `${name} <${senderMail}>`;
   const message = {
     from,
-    to: `galeite@gmail.com`,
-    subject: `Nova mensagem de contato - ${name}`,
+    to: `galeite@icloud.com`,
+    subject: `[Portfolio] - Nova mensagem - [${name}]`,
     text,
     replyTo: from
   };
