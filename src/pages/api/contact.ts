@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
   }
 
 });
-const mailer = ({ senderMail, name, text }) => {
+ const  mailer = async ({ senderMail, name, text }) => {
   const from = email;
   const message = {
     from,
@@ -26,7 +26,7 @@ const mailer = ({ senderMail, name, text }) => {
     text,
   };
 
-  return new Promise((resolve, reject) => {
+  return await new Promise((resolve, reject) => {
     transporter.sendMail(message, (error, info) => {
       error ? reject(error) : resolve(info)
     }
@@ -41,6 +41,5 @@ export default async (req, res) => {
     return;
   }
   const mailerRes = await mailer({ senderMail, name, text: content });
-  console.log(mailerRes)
   res.send(mailerRes);
 };
