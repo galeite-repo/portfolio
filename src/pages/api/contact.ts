@@ -6,6 +6,7 @@ const emailPass = process.env.MAILPASS;
 const transporter = nodemailer.createTransport({
   host: 'smtp.mail.me.com',
   port: 587,
+  secure: false, 
   auth: {
     user: email,
     pass: emailPass
