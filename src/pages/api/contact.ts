@@ -3,16 +3,20 @@ import nodemailer from 'nodemailer';
 const email = process.env.MAILADDRESS;
 const emailPass = process.env.MAILPASS;
 
-const transporter = nodemailer.createTransport("SMTP", {
+const transporter = nodemailer.createTransport({
   host: "smtp-mail.outlook.com",
+  secure: false,
+  port: 587,
   tls: {
-    ciphers:'SSLv3'
-},
-port: 587,
+
+    ciphers: 'SSLv3'
+  },
   auth: {
-      user: email,
-      pass: emailPass
+
+    user: email,
+    pass: emailPass
   }
+
 });
 const mailer = ({ senderMail, name, text }) => {
   const from = `${name} <${senderMail}>`;
