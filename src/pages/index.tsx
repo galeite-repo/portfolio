@@ -41,6 +41,7 @@ interface HomeProps {
 }
 
 export default function Home({ projects, person, experiences }: HomeProps) {
+  console.log(process.env.SENDGRID_API_KEY)
   useEffect(() => {
     // getPerson();
     Aos.init({ duration: 1500 });

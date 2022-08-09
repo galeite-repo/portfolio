@@ -1,13 +1,5 @@
-import nodemailer from 'nodemailer';
 import sendgrid from '@sendgrid/mail';
-const email = process.env.MAILADDRESS;
-const emailPass = process.env.MAILPASS;
-
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
-
-
-
-
 
 export default async (req, res) => {
   const { senderMail, name, content } = req.body;
