@@ -1,0 +1,248 @@
+<div class="bg-black text-white min-h-screen font-mono">
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-20 w-32 h-32 border-2 border-white"></div>
+      <div class="absolute bottom-32 right-32 w-24 h-24 border border-gray-500"></div>
+      <div class="absolute top-1/2 left-10 w-16 h-16 border border-gray-700"></div>
+    </div>
+
+    <div class="text-center z-10 max-w-4xl px-6">
+      <div class="mb-8">
+        <div class="w-64 h-64 mx-auto mb-8 flex items-center justify-center">
+          <img src="eu-bg.png" alt="Minha Foto" class="w-full h-full object-cover" />
+        </div>
+      </div>
+
+
+      <h1 class="text-6xl md:text-8xl font-bold mb-4 tracking-wider">
+        GABRIEL LEITE
+      </h1>
+
+      <div class="text-xl md:text-2xl mb-8 h-8">
+        <span class="border-r-2 border-white pr-2">
+          {{typedText}}
+          <span *ngIf="showCursor" class="animate-pulse">_</span>
+        </span>
+      </div>
+
+      <div class="text-gray-400 text-lg">
+        <p class="mb-2">São Paulo, Brasil</p>
+        <p>Transformando ideias em código desde 2012.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-20 px-6 max-w-6xl mx-auto">
+    <div class="border-l-4 border-white pl-8 mb-16">
+      <h2 class="text-4xl font-bold mb-8 tracking-wider">SOBRE MIM</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            Líder Técnico e Desenvolvedor Fullstack Sênior, especializado em Angular, Nodejs e Java Spring Boot.
+            Apaixonado por construir aplicações web escaláveis e liderar equipes de desenvolvimento.
+          </p>
+         <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            Mais de 12 anos de experiência em desenvolvimento de software, automação e DevOps, atuando em projetos de
+            grande escala para empresas como TIM, Oi Telecomunições e Petrobras e Banco Itaú.
+          </p>
+          <p class="text-gray-300 text-lg leading-relaxed">
+
+            Sólida expertise em tecnologias Cloud, CI/CD e otimização
+            de performance.
+            Buscando oportunidades internacionais.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-2xl font-bold mb-6 text-gray-100">STACK TECNOLÓGICA</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div *ngFor="let skill of skills"
+              class="border border-gray-700 p-3 text-center hover:border-white transition-colors">
+              <span class="text-sm">{{skill}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="py-20 px-6 max-w-6xl mx-auto border-t border-gray-800">
+    <div class="border-l-4 border-white pl-8">
+      <h2 class="text-4xl font-bold mb-12 tracking-wider">EXPERIÊNCIA</h2>
+<div class="space-y-8">
+  <div
+    *ngFor="let exp of experiences"
+    class="border border-gray-700 p-6 hover:border-gray-500 transition-colors"
+  >
+    <!-- Empresa -->
+    <div class="flex flex-wrap justify-between items-start mb-4">
+      <h3 class="text-xl font-bold text-white">{{ exp.company }}</h3>
+      <span class="text-gray-400 bg-gray-900 px-3 py-1 text-sm">
+        {{ exp.period }}
+      </span>
+    </div>
+    <p class="text-lg text-gray-300 mb-2">{{ exp.role }}</p>
+    <p class="text-gray-400">{{ exp.type }} · {{ exp.location }}</p>
+
+    <!-- Clientes e projetos -->
+    <div
+      *ngFor="let client of exp.clients"
+      class="mt-6 border-l-4 border-amber-500 pl-4"
+    >
+      <div class="flex justify-between items-center mb-2">
+        <h4 class="text-md font-semibold text-gray-200">
+          {{ client.name }}
+        </h4>
+        <span class="text-gray-400 text-sm">{{ client.year }}</span>
+      </div>
+
+      <p class="text-gray-300 mb-1">
+        <span class="font-medium">{{ client.project }}</span>
+      </p>
+      <p class="text-gray-400 mb-2">{{ client.role }}</p>
+
+      <!-- Descrição -->
+      <ul
+        class="list-disc list-inside text-sm text-gray-400 space-y-1 mb-3"
+      >
+        <li *ngFor="let desc of client.description">
+          {{ desc }}
+        </li>
+      </ul>
+
+      <!-- Tecnologias -->
+      <div class="flex flex-wrap gap-2">
+        <span
+          *ngFor="let tech of client.technologies"
+          class="px-2 py-1 bg-gray-800 text-amber-400 text-xs rounded-lg"
+        >
+          {{ tech }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+<section class="py-20 px-6 max-w-6xl mx-auto border-t border-gray-800">
+  <div class="border-l-4 border-white pl-8">
+    <h2 class="text-4xl font-bold mb-12 tracking-wider text-white">PROJETOS</h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let project of projects" class="border border-gray-700 p-6 hover:border-gray-500 transition-colors bg-gray-900 rounded">
+        <!-- Nome -->
+        <h3 class="text-xl font-bold mb-2 text-white">{{ project.name }}</h3>
+
+        <!-- Descrição -->
+        <p class="text-gray-300 text-sm mb-4">{{ project.description }}</p>
+
+        <!-- Tecnologias -->
+        <div class="mb-4">
+          <div class="flex flex-wrap gap-2">
+            <span *ngFor="let tech of project.tech" class="bg-gray-800 text-gray-300 px-2 py-1 text-xs rounded">
+              {{ tech }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Métricas -->
+        <div class="flex flex-wrap gap-4 text-gray-400 text-xs mb-4">
+          <span>⭐ {{ project.stars }}</span>
+          <span>🍴 {{ project.forks }}</span>
+          <span>👀 {{ project.watchers }}</span>
+          <span *ngIf="project.lastCommit">Último commit: {{ project.lastCommit | date:'dd/MM/YY' }}</span>
+        </div>
+
+        <!-- Links -->
+        <div class="flex gap-4">
+          <a [href]="project.github"
+             class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+             target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            CÓDIGO
+          </a>
+
+          <a *ngIf="project.live" [href]="project.live"
+             class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+             target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15,3 21,3 21,9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            DEMO
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botão geral -->
+    <div class="mt-12 text-center">
+      <a href="https://github.com/galeite-repo?tab=repositories"
+         class="inline-flex items-center gap-3 border border-white px-8 py-4 hover:bg-white hover:text-black transition-colors">
+        VER TODOS OS PROJETOS NO GITHUB
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Contact Section -->
+<section class="py-20 px-6 max-w-6xl mx-auto border-t border-gray-800">
+  <div class="border-l-4 border-white pl-8 text-center">
+    <h2 class="text-4xl font-bold mb-12 tracking-wider">CONTATO</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto justify-items-center">
+      <a href="mailto:galeite.dev@gmail.com"
+        class="flex flex-col items-center gap-4 p-6 border border-gray-700 hover:border-white transition-colors group">
+        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"
+          class="group-hover:scale-110 transition-transform">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+          <polyline points="22,6 12,13 2,6" />
+        </svg>
+        <span class="text-sm">EMAIL</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/-gabriel-leite/"
+        class="flex flex-col items-center gap-4 p-6 border border-gray-700 hover:border-white transition-colors group"
+        target="_blank" rel="noopener noreferrer">
+        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"
+          class="group-hover:scale-110 transition-transform">
+          <path
+            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+        <span class="text-sm">LINKEDIN</span>
+      </a>
+
+      <a href="https://github.com/galeite-repo"
+        class="flex flex-col items-center gap-4 p-6 border border-gray-700 hover:border-white transition-colors group"
+        target="_blank" rel="noopener noreferrer">
+        <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"
+          class="group-hover:scale-110 transition-transform">
+          <path
+            d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.300 24 12c0-6.627-5.373-12-12-12z" />
+        </svg>
+        <span class="text-sm">GITHUB</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-800 py-8 text-center">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-gray-500 text-sm mb-2">
+        © 2025 GABRIEL LEITE - ENGENHEIRO DE SOFTWARE
+      </p>
+    </div>
+  </footer>
+</div>
