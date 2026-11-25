@@ -1,0 +1,21 @@
+# Este arquivo substitui o .gitignore no envio para a Vercel,
+# por isso repete as pastas geradas.
+/node_modules
+/.angular
+/dist
+/coverage
+/tmp
+/out-tsc
+.git
+.vercel
+.vscode
+.idea
+.DS_Store
+*.log
+
+# Documento pessoal (contém telefone)
+/cv.pdf
+
+# Fotos originais, não usadas pelo site
+/public/eu.jpeg
+/public/eu-bg.png

@@ -1,13 +1,134 @@
-/* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Estilos customizados para o portfólio anos 90 */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+    -webkit-text-size-adjust: 100%;
+  }
 
-body {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  margin: 0;
-  padding: 0;
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    @apply bg-ink text-marigold;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-[84rem] px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Archivo no extremo largo do eixo de largura: a voz dos títulos */
+  .display {
+    font-stretch: 125%;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .section-title {
+    @apply display;
+    font-size: clamp(2rem, 4.4vw, 3.75rem);
+  }
+
+  .btn {
+    @apply inline-flex min-h-[3rem] items-center justify-center px-5 text-base sm:px-6 font-semibold transition-colors duration-200;
+  }
+
+  .text-link {
+    @apply font-semibold underline decoration-marigold decoration-[3px] underline-offset-[5px] transition-colors hover:decoration-current;
+  }
+
+  .hero-name {
+    @apply display;
+    font-size: clamp(3.4rem, 10.4vw, 10.5rem);
+    line-height: 0.86;
+    letter-spacing: -0.045em;
+  }
+
+  .bullets > li {
+    @apply relative pl-5;
+  }
+
+  .bullets > li::before {
+    content: '';
+    @apply absolute left-0 top-[0.62em] h-[3px] w-2.5 bg-marigold;
+  }
+
+  /* Accordion nativo dos projetos */
+  details.project > summary {
+    @apply cursor-pointer list-none;
+  }
+
+  details.project > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details.project .toggle::before,
+  details.project .toggle::after {
+    content: '';
+    @apply absolute left-1/2 top-1/2 h-[2px] w-3.5 -translate-x-1/2 -translate-y-1/2 bg-current transition-transform duration-200;
+  }
+
+  details.project:not([open]) .toggle::after {
+    @apply rotate-90;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  /* A carga do guindaste balança de leve */
+  .crane-load {
+    transform-origin: 290px 44px;
+    animation: sway 5s ease-in-out infinite alternate;
+  }
+
+  .shot {
+    stroke-dasharray: 6 8;
+    animation: shot 1.6s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-2.5deg);
+  }
+
+  to {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes shot {
+  to {
+    stroke-dashoffset: -28;
+  }
 }
