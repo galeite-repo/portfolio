@@ -1,10 +1,10 @@
 <a href="#conteudo"
-  class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-3 focus:text-paper">
+  class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-night focus:px-4 focus:py-3 focus:text-paper">
   Ir para o conteúdo
 </a>
 
 <!-- Cabeçalho -->
-<header class="sticky top-0 z-40 bg-marigold">
+<header class="on-dark sticky top-0 z-40 bg-brand text-paper">
   <div class="wrap flex h-16 items-center justify-between gap-6">
     <a href="#topo" class="text-lg font-extrabold tracking-tight [font-stretch:115%]">
       {{ profile.firstName }} {{ profile.lastName }}
@@ -13,11 +13,11 @@
     <nav aria-label="Principal" class="hidden items-center gap-7 lg:flex">
       @for (item of nav; track item.id) {
         <a [href]="'#' + item.id"
-          class="font-medium underline decoration-transparent decoration-2 underline-offset-[6px] transition-colors hover:decoration-ink">
+          class="font-medium underline decoration-transparent decoration-2 underline-offset-[6px] transition-colors hover:decoration-accent">
           {{ item.label }}
         </a>
       }
-      <a href="#contato" class="btn !min-h-[2.5rem] bg-ink !px-5 text-paper hover:bg-petrol">Contato</a>
+      <a href="#contato" class="btn !min-h-[2.5rem] bg-paper !px-5 text-brand hover:bg-accent hover:text-night">Contato</a>
     </nav>
 
     <button type="button" class="-mr-2 flex h-11 items-center px-2 font-semibold lg:hidden" aria-controls="menu"
@@ -28,7 +28,7 @@
 
   @if (menuOpen()) {
     <nav id="menu" aria-label="Principal"
-      class="absolute inset-x-0 top-full border-y-2 border-ink bg-marigold pb-4 pt-2 lg:hidden">
+      class="absolute inset-x-0 top-full border-y-2 border-accent bg-brand pb-4 pt-2 lg:hidden">
       <div class="wrap flex flex-col">
         @for (item of nav; track item.id) {
           <a [href]="'#' + item.id" (click)="menuOpen.set(false)" class="py-3 text-xl font-semibold">{{ item.label }}</a>
@@ -41,7 +41,7 @@
 
 <main id="conteudo">
   <!-- Hero -->
-  <section id="topo" class="scroll-mt-16 overflow-hidden bg-marigold">
+  <section id="topo" class="on-dark scroll-mt-16 hero-bg overflow-hidden text-paper">
     <div
       class="wrap relative flex flex-col lg:min-h-[min(calc(100svh-9rem),50rem)] lg:flex-row lg:items-center lg:justify-between">
       <div class="relative z-10 pb-10 pt-10 sm:pt-14 lg:py-14">
@@ -58,24 +58,23 @@
         </p>
 
         <div class="rise mt-8 flex flex-wrap gap-3" style="--delay: 210ms">
-          <a href="#experiencia" class="btn bg-ink text-paper hover:bg-petrol">Ver experiência</a>
-          <a href="#contato" class="btn border-2 border-ink hover:bg-ink hover:text-paper">Entrar em contato</a>
+          <a href="#experiencia" class="btn bg-paper text-brand hover:bg-accent hover:text-night">Ver experiência</a>
+          <a href="#contato" class="btn border-2 border-paper hover:bg-paper hover:text-brand">Entrar em contato</a>
         </div>
       </div>
 
-      <!-- O painel claro alinha com as laterais da foto; a cabeça ultrapassa o topo dele -->
+      <!-- O retrato fica direto sobre o fundo; .portrait dissolve os cortes laterais -->
       <div
         class="rise relative mx-auto w-full max-w-[26rem] shrink-0 self-end lg:mx-0 lg:w-[43%] lg:max-w-[38rem]"
         style="--delay: 120ms">
-        <div class="absolute inset-x-0 bottom-0 h-[70%] bg-paper" aria-hidden="true"></div>
         <img src="gabriel.webp" width="959" height="1030" alt="Retrato em preto e branco de Gabriel Leite"
-          class="relative block h-auto w-full" fetchpriority="high" />
+          class="portrait block h-auto w-full" fetchpriority="high" />
       </div>
     </div>
   </section>
 
   <!-- Clientes -->
-  <section aria-label="Clientes atendidos" class="bg-ink text-paper">
+  <section aria-label="Clientes atendidos" class="on-dark bg-night text-paper">
     <ul class="wrap flex flex-wrap items-center gap-x-8 gap-y-2 py-6 font-semibold [font-stretch:110%] lg:justify-between">
       @for (client of clients; track client) {
         <li>{{ client }}</li>
@@ -119,7 +118,7 @@
                         <span class="mt-1 block text-muted">{{ project.period }}</span>
                       }
                     </span>
-                    <span class="toggle relative mt-0.5 h-8 w-8 shrink-0 bg-marigold" aria-hidden="true"></span>
+                    <span class="toggle relative mt-0.5 h-8 w-8 shrink-0 bg-brand text-paper" aria-hidden="true"></span>
                   </summary>
 
                   <div class="pb-8 pt-1">
@@ -144,11 +143,11 @@
   </section>
 
   <!-- Produtos próprios -->
-  <section id="produtos" class="bg-petrol py-20 text-paper lg:py-32">
+  <section id="produtos" class="on-dark bg-night py-20 text-paper lg:py-32">
     <div class="wrap">
       <div class="grid gap-x-16 gap-y-5 lg:grid-cols-12 lg:items-end">
         <h2 class="section-title lg:col-span-7">Dois SaaS próprios, pensados com IA desde o início</h2>
-        <p class="text-lg leading-relaxed text-petrol-soft lg:col-span-5">
+        <p class="text-lg leading-relaxed text-night-soft lg:col-span-5">
           Produtos que criei e mantenho em produção, com desenvolvimento acelerado por Cursor e Claude Code.
         </p>
       </div>
@@ -156,35 +155,35 @@
       <div class="mt-14 grid gap-14 lg:mt-20 lg:grid-cols-2 lg:gap-16">
         @for (product of products; track product.id) {
           <article>
-            <div class="border-b-2 border-marigold">
+            <div class="border-b-2 border-accent">
               @switch (product.id) {
                 @case ('liftme') {
                   <!-- Guindaste de torre -->
-                  <svg viewBox="0 0 400 220" class="block w-full" fill="none" stroke="#bfd0d5" stroke-width="2"
+                  <svg viewBox="0 0 400 220" class="block w-full" fill="none" stroke="#b9c9d9" stroke-width="2"
                     stroke-linejoin="round" aria-hidden="true">
                     <path d="M96 220V44M124 220V44M96 220l28-22-28-22 28-22-28-22 28-22-28-22 28-22-28-22" />
                     <path d="M110 10 96 44h28zM110 10 30 32M110 10l150 22" />
                     <path d="M26 44h352M26 32h338l14 12M124 44l12-12 12 12l12-12 12 12l12-12 12 12l12-12 12 12l12-12 12 12l12-12 12 12l12-12 12 12l12-12 12 12l12-12 12 12l12-12 12 12" />
-                    <path fill="#2a4b56" d="M30 44h40v34H30z" />
-                    <path fill="#ffbe1a" stroke="#ffbe1a" d="M128 50h20v22h-20z" />
+                    <path fill="#1f4e79" d="M30 44h40v34H30z" />
+                    <path fill="#8cc4f5" stroke="#8cc4f5" d="M128 50h20v22h-20z" />
                     <g class="crane-load">
                       <path d="M278 44h24v8h-24zM290 52v62M290 114l-34 26M290 114l34 26" />
-                      <path fill="#ffbe1a" stroke="#ffbe1a" d="M246 140h88v36h-88z" />
-                      <path stroke="#0d2b35" d="M268 140v36M290 140v36M312 140v36" />
+                      <path fill="#8cc4f5" stroke="#8cc4f5" d="M246 140h88v36h-88z" />
+                      <path stroke="#0b1a2a" d="M268 140v36M290 140v36M312 140v36" />
                     </g>
                   </svg>
                 }
                 @case ('greentips') {
                   <!-- Campo com a trajetória de um chute -->
-                  <svg viewBox="0 0 400 220" class="block w-full" fill="none" stroke="#bfd0d5" stroke-width="2"
+                  <svg viewBox="0 0 400 220" class="block w-full" fill="none" stroke="#b9c9d9" stroke-width="2"
                     aria-hidden="true">
                     <path d="M20 14h360v192H20zM200 14v192" />
                     <circle cx="200" cy="110" r="36" />
-                    <circle cx="200" cy="110" r="3" fill="#bfd0d5" />
+                    <circle cx="200" cy="110" r="3" fill="#b9c9d9" />
                     <path d="M20 51h58v118H20M20 81h22v58H20M78 87a28 28 0 0 1 0 46M20 95H10v30h10" />
                     <path d="M380 51h-58v118h58M380 81h-22v58h22M322 87a28 28 0 0 0 0 46M380 95h10v30h-10" />
-                    <path class="shot" stroke="#ffbe1a" stroke-width="3" d="M132 171 226 153 262 65Q330 59 384 105" />
-                    <g fill="#ffbe1a" stroke="none">
+                    <path class="shot" stroke="#8cc4f5" stroke-width="3" d="M132 171 226 153 262 65Q330 59 384 105" />
+                    <g fill="#8cc4f5" stroke="none">
                       <circle cx="132" cy="171" r="7" />
                       <circle cx="226" cy="153" r="7" />
                       <circle cx="262" cy="65" r="7" />
@@ -196,16 +195,16 @@
             </div>
 
             <h3 class="mt-7 text-3xl font-extrabold leading-tight [font-stretch:115%]">{{ product.name }}</h3>
-            <p class="mt-1.5 text-lg font-semibold text-marigold">{{ product.tagline }}</p>
+            <p class="mt-1.5 text-lg font-semibold text-accent">{{ product.tagline }}</p>
             <p class="mt-5 text-lg leading-relaxed">{{ product.summary }}</p>
-            <ul class="bullets mt-5 space-y-3 leading-relaxed text-petrol-soft">
+            <ul class="bullets mt-5 space-y-3 leading-relaxed text-night-soft">
               @for (item of product.highlights; track $index) {
                 <li>{{ item }}</li>
               }
             </ul>
             <ul aria-label="Tecnologias" class="mt-7 flex flex-wrap gap-2">
               @for (tech of product.technologies; track tech) {
-                <li class="border border-petrol-line px-3 py-1.5 text-sm font-medium">{{ tech }}</li>
+                <li class="border border-night-line px-3 py-1.5 text-sm font-medium">{{ tech }}</li>
               }
             </ul>
           </article>
@@ -283,7 +282,7 @@
             <li class="border-t-2 border-ink pb-10 pt-5">
               <h3 class="break-words text-xl font-bold leading-snug">
                 <a [href]="repo.github" target="_blank" rel="noopener noreferrer"
-                  class="decoration-marigold decoration-[3px] underline-offset-4 hover:underline">{{ repo.name }}</a>
+                  class="decoration-accent decoration-[3px] underline-offset-4 hover:underline">{{ repo.name }}</a>
               </h3>
               @if (repo.description) {
                 <p class="mt-2 leading-relaxed">{{ repo.description }}</p>
@@ -305,7 +304,7 @@
   }
 
   <!-- Contato -->
-  <section id="contato" class="bg-marigold py-20 lg:py-32">
+  <section id="contato" class="on-dark bg-brand py-20 text-paper lg:py-32">
     <div class="wrap">
       <h2 class="section-title">Vamos conversar</h2>
       <p class="mt-5 max-w-[36rem] text-lg leading-relaxed lg:text-xl lg:leading-relaxed">
@@ -315,15 +314,15 @@
         class="mt-10 inline-block max-w-full break-words text-[clamp(1.35rem,5vw,4rem)] font-extrabold leading-tight tracking-tight underline decoration-2 underline-offset-[0.2em] transition-[text-decoration-thickness] [font-stretch:115%] hover:decoration-4">{{ profile.email }}</a>
       <div class="mt-12 flex flex-wrap gap-3">
         <a [href]="profile.linkedin" target="_blank" rel="noopener noreferrer"
-          class="btn bg-ink text-paper hover:bg-petrol">LinkedIn</a>
+          class="btn bg-paper text-brand hover:bg-accent hover:text-night">LinkedIn</a>
         <a [href]="profile.github" target="_blank" rel="noopener noreferrer"
-          class="btn border-2 border-ink hover:bg-ink hover:text-paper">GitHub</a>
+          class="btn border-2 border-paper hover:bg-paper hover:text-brand">GitHub</a>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="bg-ink py-8 text-paper">
+<footer class="on-dark bg-night py-8 text-paper">
   <div class="wrap flex flex-wrap items-center justify-between gap-4">
     <p>© {{ year }} {{ profile.firstName }} {{ profile.lastName }}</p>
     <a href="#topo" class="text-link">Voltar ao topo</a>

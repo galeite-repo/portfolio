@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --accent: #2e75b6;
+  }
+
+  .on-dark {
+    --accent: #8cc4f5;
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 4rem;
@@ -19,7 +27,7 @@
   }
 
   ::selection {
-    @apply bg-ink text-marigold;
+    @apply bg-accent text-night;
   }
 }
 
@@ -47,7 +55,7 @@
   }
 
   .text-link {
-    @apply font-semibold underline decoration-marigold decoration-[3px] underline-offset-[5px] transition-colors hover:decoration-current;
+    @apply font-semibold underline decoration-accent decoration-[3px] underline-offset-[5px] transition-colors hover:decoration-current;
   }
 
   .hero-name {
@@ -57,13 +65,27 @@
     letter-spacing: -0.045em;
   }
 
+  /* Escurece até a cor da faixa de clientes, onde a camiseta se funde ao fundo */
+  .hero-bg {
+    background: linear-gradient(to bottom, theme('colors.brand') 35%, theme('colors.night.DEFAULT') 97%);
+  }
+
+  .portrait {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent),
+      linear-gradient(to bottom, #000 80%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent, #000 18%, #000 82%, transparent),
+      linear-gradient(to bottom, #000 80%, transparent);
+    mask-composite: intersect;
+  }
+
   .bullets > li {
     @apply relative pl-5;
   }
 
   .bullets > li::before {
     content: '';
-    @apply absolute left-0 top-[0.62em] h-[3px] w-2.5 bg-marigold;
+    @apply absolute left-0 top-[0.62em] h-[3px] w-2.5 bg-accent;
   }
 
   /* Accordion nativo dos projetos */
